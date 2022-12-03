@@ -55,7 +55,7 @@ EmployerCompany varchar(255),
 PRIMARY KEY (EmailAddress),
 FOREIGN KEY (EmployerCompany) REFERENCES Pharmacy (PharmacyName)
 );
-CREATE TABLE Supplier
+CREATE TABLE IF NOT EXISTS Supplier
 (
 SupplierName varchar(255) NOT NULL,
 Address varchar(255),
