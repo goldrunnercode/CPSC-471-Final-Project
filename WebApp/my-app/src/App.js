@@ -1,20 +1,26 @@
 import React from 'react'
 import './App.css'
-import Header from '../src/Components/Header'
-import { Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router,
+  Routes,
+  Route,
+  Link } from 'react-router-dom';
 import Home from '../src/Pages/Home'
 import Products from '../src/Pages/Products'
 import Blog from '../src/Pages/Blog'
 function App() {
   return (
-    <>
-      <Header />
+    <Router>
+      <nav style = {{display:'flex', flexDirection:'column'}}>
+        <Link to="/">Home</Link>
+        <Link to="/products">Products</Link>
+        <Link to="/blog">Blog</Link>
+      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/products" element={<Products />} />
       </Routes>
-    </>
+    </Router>
   )
 }
 export default App

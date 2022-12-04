@@ -9,9 +9,6 @@ const Navbar = () => {
           <MenuLink to="/home" activeStyle>
             Home
           </MenuLink>
-          <MenuLink to="/about" activeStyle>
-            About
-          </MenuLink>
           <MenuLink to="/products" activeStyle>
             Products
           </MenuLink>
