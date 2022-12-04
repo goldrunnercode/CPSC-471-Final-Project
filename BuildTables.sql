@@ -54,7 +54,6 @@ CREATE TABLE IF NOT EXISTS Orders
 (
 OrderNo int(12) NOT NULL AUTO_INCREMENT,
 MedName varchar(255),
-PickupLocation varchar(255),
 EstArrival varchar(255),
 Quantity int(6),
 Status varchar(255),
@@ -71,7 +70,7 @@ CREATE TABLE IF NOT EXISTS CustomerHistory
 (
 EmailAddress varchar(255),
 OrderNo int(12),
-COrders int(12) NOT NULL,
+COrders int(12),
 PRIMARY KEY (COrders),
 FOREIGN KEY (EmailAddress) REFERENCES Customer (EmailAddress),
 FOREIGN KEY (OrderNo) REFERENCES Orders (OrderNo)
