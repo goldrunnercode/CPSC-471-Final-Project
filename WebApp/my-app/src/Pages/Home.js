@@ -12,7 +12,13 @@ function Home() {
   const handleSubmit = (event) => {
     event.preventDefault()
     setDisplay(text)
+    localStorage.setItem('user', text)
   }
+  const handleLogout = () => {
+    setText("");
+    setDisplay("");
+    localStorage.clear();
+  };
 
   return (
     <div>
@@ -21,6 +27,7 @@ function Home() {
         <button type="submit">Submit</button>
       </form>
       <p>{display}</p>
+      <button onClick={handleLogout}>logout</button>
     </div>
   )
 }
