@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3001
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
@@ -10,7 +10,7 @@ var con = mysql.createConnection({
   database: "fullstore"
 });
 
-app.get('/:EmailAddress', (req, res) => {
+app.get('/customer/:EmailAddress', (req, res) => {
   if(con.state === 'disconnected') {
     con.connect(function(err) {
       if (err) throw err;
@@ -21,6 +21,8 @@ app.get('/:EmailAddress', (req, res) => {
     res.send(result)
   });
 })
+
+
 
 
 app.listen(port, () => {
