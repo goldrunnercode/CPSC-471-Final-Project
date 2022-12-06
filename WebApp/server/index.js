@@ -10,7 +10,7 @@ var con = mysql.createConnection({
   database: "fullstore"
 });
 
-app.get('/customer/:EmailAddress', (req, res) => {
+app.get('/customerorders/:EmailAddress', (req, res) => {
   if(con.state === 'disconnected') {
     con.connect(function(err) {
       if (err) throw err;

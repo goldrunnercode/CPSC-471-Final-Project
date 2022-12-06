@@ -7,7 +7,7 @@ export default class OrdersTable extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`localhost:3001/customerorders/`+localStorage.get('user'))
+    axios.get(``+localStorage.getItem('user'))
       .then(res => {
         const orders = res.data;
         this.setState({ orders });
