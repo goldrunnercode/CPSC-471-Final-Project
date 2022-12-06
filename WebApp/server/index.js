@@ -10,15 +10,22 @@ var con = mysql.createConnection({
   database: "fullstore"
 });
 
-app.get('/', (req, res) => {
+app.get('/:EmailAddress', (req, res) => {
     con.connect(function(err) {
         if (err) throw err;
-        con.query("SELECT EmailAddress FROM Customer", function (err, result, fields) {
+        con.query("SELECT * FROM Orders WHERE CustomerEmail = '"+req.params.EmailAddress +"'", function (err, result, fields) {
           if (err) throw err;
           res.send(result)
         });
       });
-})
+      if (con.state !== 'disconnected') {
+        con.end(function(err) {
+          if (err) throw err;
+          console.log('Connection closed');
+        });
+      }
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
