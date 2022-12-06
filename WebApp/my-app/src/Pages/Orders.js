@@ -1,7 +1,13 @@
 import React from 'react'
+
+
+const showOrders = () => {
+  
+};
+
 function Orders() {
   return (
-    <div>Orders</div>
+    <button onClick={showOrders}>show orders</button>
   )
 }
 export default Orders
