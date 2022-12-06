@@ -27,7 +27,7 @@ function Home() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={text} onChange={handleChange} />
+        <input type="text" value={text} onChange={handleChange} placeholder="Email Address"/>
         <button type="submit">Submit</button>
       </form>
       <p >{display}</p>
