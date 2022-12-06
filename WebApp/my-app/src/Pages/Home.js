@@ -14,6 +14,11 @@ function Home() {
     setDisplay(text)
     localStorage.setItem('user', text)
 
+    // query the database to see if the user exists
+    // if the user exists, redirect the page to orders
+    // if the user does not exist, redirect the page to signup
+
+
     // redirect the page to signup
     window.location.href = '/signup'
   }
