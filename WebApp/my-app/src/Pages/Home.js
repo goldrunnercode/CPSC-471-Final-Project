@@ -13,7 +13,11 @@ function Home() {
     event.preventDefault()
     setDisplay(text)
     localStorage.setItem('user', text)
+
+    // redirect the page to signup
+    window.location.href = '/signup'
   }
+
   const handleLogout = () => {
     setText("");
     setDisplay("");

@@ -37,7 +37,7 @@ function Signup() {
     
     const handleSubmit = (event) => {
         event.preventDefault(); // prevent the page from refreshing
-        setDisplay("Thank you for signing up, " + firstName + " " + lastName + "!");
+        setDisplay("first name: " + firstName + ", last name: " + lastName + ", pickup location: " + pickup + ", pickup month: " + pickupM + ", pickup day: " + pickupD + ", pickup year: " + pickupY);
     };
     
     return (
@@ -51,6 +51,7 @@ function Signup() {
                 <input type="text" value={pickupY} onChange={handlePickupY} placeholder="Pickup Year" />
                 <button type="submit">Submit</button>
             </form>
+            <p >{display}</p>
         </div>
     );
 }
