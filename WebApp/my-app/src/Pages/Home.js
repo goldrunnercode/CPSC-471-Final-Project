@@ -26,7 +26,7 @@ function Home() {
         <input type="text" value={text} onChange={handleChange} />
         <button type="submit">Submit</button>
       </form>
-      <p>{display}</p>
+      <p >{display}</p>
       <button onClick={handleLogout}>logout</button>
     </div>
   )
