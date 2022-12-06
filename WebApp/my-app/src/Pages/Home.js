@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 // Make a text input field, and store the value in the state, then display it once the user presses enter
 function Home() {
@@ -17,10 +18,15 @@ function Home() {
     // query the database to see if the user exists
     // if the user exists, redirect the page to orders
     // if the user does not exist, redirect the page to signup
-
-
-    // redirect the page to signup
-    // window.location.href = '/signup'
+    axios.get(`http://localhost:3001/emailexists/`+localStorage.getItem('user'))
+      .then(res => {
+        const exists = res.data;
+        if (exists) {
+          window.location.href = '/orders'
+        } else {
+          window.location.href = '/signup'
+        }
+      })
   }
 
   const handleLogout = () => {
