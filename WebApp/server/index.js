@@ -20,6 +20,11 @@ app.get('/:EmailAddress', (req, res) => {
         res.send(result)
       });
     });
+  } else {
+    con.query("SELECT * FROM Orders WHERE CustomerEmail = '"+req.params.EmailAddress +"'", function (err, result, fields) {
+      if (err) throw err;
+      res.send(result)
+    });
   }
 })
 
