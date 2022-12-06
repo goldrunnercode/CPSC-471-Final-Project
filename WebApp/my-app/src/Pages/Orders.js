@@ -1,12 +1,8 @@
 import React from 'react'
 
-<<<<<<< Updated upstream
-// import { DataGrid } from '@mui/x-data-grid';
-// import OrdersTable from '../components/OrdersTable';
-=======
+
 import { DataGrid } from '@mui/x-data-grid';
 import OrdersTable from '../Components/OrdersTable.js';
->>>>>>> Stashed changes
 const showOrders = () => {
   
 };

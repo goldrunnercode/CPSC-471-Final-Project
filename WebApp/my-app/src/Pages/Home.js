@@ -20,7 +20,7 @@ function Home() {
 
 
     // redirect the page to signup
-    window.location.href = '/signup'
+    // window.location.href = '/signup'
   }
 
   const handleLogout = () => {
