@@ -13,7 +13,6 @@ function App() {
     <Router>
       <nav style = {{display:'flex', flexDirection:'column'}}>
         <Link to="/">Home</Link>
-        <Link to="/staffonly">Staff Only</Link>
         <Link to="/orders">Orders</Link>
         <Link to="/signup">Signup</Link>
       </nav>

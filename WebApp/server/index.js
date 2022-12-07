@@ -27,9 +27,9 @@ app.get('/customerorders/:EmailAddress', (req, res) => {
     res.send(result)
   });
 })
-app.get('/customerordersall/', (req, res) => {
+app.get('/customerordersall/:EmailAddress', (req, res) => {
     checkConnection();
-    con.query("SELECT * FROM Orders", function (err, result, fields) {
+    con.query("SELECT * FROM Orders WHERE StaffEmail = '"+req.params.EmailAddress +"'", function (err, result, fields) {
       if (err) throw err;
       res.send(result)
     });

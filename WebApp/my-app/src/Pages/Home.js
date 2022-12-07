@@ -18,26 +18,27 @@ function Home() {
     // query the database to see if the user exists
     // if the user exists, redirect the page to orders
     // if the user does not exist, redirect the page to signup
-    axios.get(`http://localhost:3001/emailexists/`+localStorage.getItem('user'))
-      .then(res => {
-        const exists = res.data;
-        if (exists) {
-          window.location.href = '/orders'
-        } else {
-          axios.get(`http://localhost:3001/staffemailexists/`+localStorage.getItem('user'))
+    axios.get(`http://localhost:3001/staffemailexists/`+localStorage.getItem('user'))
           .then(res => {
             const exists = res.data;
             if (exists) {
               if(window.location.href !=='/staffonly'){
+              localStorage.setItem('staff',true)
               window.location.href = '/staffonly'
               }
             } else {
-              window.location.href = '/signup'
+              axios.get(`http://localhost:3001/emailexists/`+localStorage.getItem('user'))
+                .then(res => {
+                  const exists = res.data;
+                  if (exists) {
+                  window.location.href = '/orders'
+                } else {
+                  window.location.href = '/signup'
+                 }
+              })
             }
           })
-          
-        }
-      })
+    
   }
 
   const handleLogout = () => {
