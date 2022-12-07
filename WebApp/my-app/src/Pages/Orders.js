@@ -10,11 +10,7 @@ function Orders() {
   return (
     <div>
       <OrdersTable />
-    </div>
-    // <div>
-    //   <button onClick={showOrders}>show orders</button>
-    // </div>
-    
+    </div>    
   )
 }
 export default Orders

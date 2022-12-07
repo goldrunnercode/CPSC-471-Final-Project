@@ -27,6 +27,13 @@ app.get('/customerorders/:EmailAddress', (req, res) => {
     res.send(result)
   });
 })
+app.get('/customerordersall/', (req, res) => {
+    checkConnection();
+    con.query("SELECT * FROM Orders", function (err, result, fields) {
+      if (err) throw err;
+      res.send(result)
+    });
+  })
 
 app.get('/emailexists/:EmailAddress', (req, res) => {
   checkConnection();
@@ -35,6 +42,14 @@ app.get('/emailexists/:EmailAddress', (req, res) => {
     res.send(result.length > 0)
   });
 })
+
+app.get('/staffemailexists/:EmailAddress', (req, res) => {
+    checkConnection();
+    con.query("SELECT * FROM PharmacyStaff WHERE EmailAddress = '"+req.params.EmailAddress +"'", function (err, result, fields) {
+      if (err) throw err;
+      res.send(result.length > 0)
+    });
+  })
 
 app.get('/signupsubmit/:EmailAddress/:FirstName/:LastName/:PickupLocation', (req, res) => {
   checkConnection();

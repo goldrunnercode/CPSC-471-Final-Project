@@ -24,7 +24,18 @@ function Home() {
         if (exists) {
           window.location.href = '/orders'
         } else {
-          window.location.href = '/signup'
+          axios.get(`http://localhost:3001/staffemailexists/`+localStorage.getItem('user'))
+          .then(res => {
+            const exists = res.data;
+            if (exists) {
+              if(window.location.href !=='/staffonly'){
+              window.location.href = '/staffonly'
+              }
+            } else {
+              window.location.href = '/signup'
+            }
+          })
+          
         }
       })
   }
