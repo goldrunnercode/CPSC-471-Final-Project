@@ -21,7 +21,7 @@ export default class AllOrdersTable extends React.Component {
         { field: 'MedName', headerName: 'MedName', width: 150 },
         { field: 'EstArrival', headerName: 'EstArrival', width: 150 },
         { field: 'Quantity', headerName: 'Quantity', width: 150 },
-        { field: 'Status', headerName: 'Status', width: 150 },
+        { field: 'Status', headerName: 'Status', width: 150 , editable: true},
         { field: 'StaffEmail', headerName: 'StaffEmail', width: 250 },
         { field: 'CompanyName', headerName: 'CompanyName', width: 250 , editable: true},
         { field: 'OPharmacyName', headerName: 'PharmacyName', width: 250 },
@@ -48,11 +48,19 @@ export default class AllOrdersTable extends React.Component {
             columns={this.state2.columns}
             getRowId={(row) => row.id}
             onCellEditCommit={(params, event) => {
-            console.log(params.value);
-            axios.get(`http://localhost:3001/updateorder/`+params.id+"/"+params.value)
-              .then(res => {
-                
-            })
+            if(params.field === 'CompanyName'){
+              console.log(params.value);
+              axios.get(`http://localhost:3001/updateorder/`+params.id+"/"+params.value)
+                .then(res => {
+                  
+              })
+            }
+            else if(params.field === 'Status'){
+              console.log(params.value);
+              axios.get(`http://localhost:3001/updateorderstatus/`+params.id+"/"+params.value)
+                .then(res => {  
+              })
+            }
             }}
              />
         </div>

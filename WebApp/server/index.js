@@ -20,20 +20,27 @@ function checkConnection() {
   }
 }
 
-app.get('/customerorders/:EmailAddress', (req, res) => {
-  checkConnection();
-  con.query("SELECT * FROM Orders WHERE CustomerEmail = '"+req.params.EmailAddress +"'", function (err, result, fields) {
-    if (err) throw err;
-    res.send(result)
-  });
-})
-app.get('/updateorder/:OrderNo/:CompanyName', (req, res) => {
+  app.get('/customerorders/:EmailAddress', (req, res) => {
     checkConnection();
-    con.query("UPDATE Orders SET CompanyName ='"+req.params.CompanyName +"' WHERE OrderNo = "+req.params.OrderNo, function (err, result, fields) {
+    con.query("SELECT * FROM Orders WHERE CustomerEmail = '"+req.params.EmailAddress +"'", function (err, result, fields) {
       if (err) throw err;
       res.send(result)
     });
   })
+  app.get('/updateorder/:OrderNo/:CompanyName', (req, res) => {
+      checkConnection();
+      con.query("UPDATE Orders SET CompanyName ='"+req.params.CompanyName +"' WHERE OrderNo = "+req.params.OrderNo, function (err, result, fields) {
+        if (err) throw err;
+        res.send(result)
+      });
+    })
+    app.get('/updateorderstatus/:OrderNo/:Status', (req, res) => {
+      checkConnection();
+      con.query("UPDATE Orders SET Status ='"+req.params.Status +"' WHERE OrderNo = "+req.params.OrderNo, function (err, result, fields) {
+        if (err) throw err;
+        res.send(result)
+      });
+    })
   app.get('/customerordersall/:EmailAddress', (req, res) => {
     checkConnection();
     con.query("SELECT * FROM Orders WHERE StaffEmail = '"+req.params.EmailAddress +"'", function (err, result, fields) {
