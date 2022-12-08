@@ -1,6 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
+import {
+  GridColumns,
+  GridRowsProp,
+  DataGrid,
+  GridCellEditStopParams,
+  GridCellEditStopReasons,
+  MuiEvent,
+} from '@mui/x-data-grid';
 export default class AllOrdersTable extends React.Component {
 
 
@@ -16,7 +23,7 @@ export default class AllOrdersTable extends React.Component {
         { field: 'Quantity', headerName: 'Quantity', width: 150 },
         { field: 'Status', headerName: 'Status', width: 150 },
         { field: 'StaffEmail', headerName: 'StaffEmail', width: 250 },
-        { field: 'CompanyName', headerName: 'CompanyName', width: 250 },
+        { field: 'CompanyName', headerName: 'CompanyName', width: 250 , editable: true},
         { field: 'OPharmacyName', headerName: 'PharmacyName', width: 250 },
       ]
   }
@@ -40,8 +47,16 @@ export default class AllOrdersTable extends React.Component {
                 )} 
             columns={this.state2.columns}
             getRowId={(row) => row.id}
+            onCellEditCommit={(params, event) => {
+            console.log(params.value);
+            axios.get(`http://localhost:3001/updateorder/`+params.id+"/"+params.value)
+              .then(res => {
+                
+            })
+            }}
              />
         </div>
+
   )
 }
 }

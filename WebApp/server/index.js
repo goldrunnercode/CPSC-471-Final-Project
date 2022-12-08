@@ -8,7 +8,7 @@ app.use(cors())
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Julia&Fiona0313",
+  password: "password",
   database: "fullstore"
 });
 
@@ -27,7 +27,14 @@ app.get('/customerorders/:EmailAddress', (req, res) => {
     res.send(result)
   });
 })
-app.get('/customerordersall/:EmailAddress', (req, res) => {
+app.get('/updateorder/:OrderNo/:CompanyName', (req, res) => {
+    checkConnection();
+    con.query("UPDATE Orders SET CompanyName ='"+req.params.CompanyName +"' WHERE OrderNo = "+req.params.OrderNo, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result)
+    });
+  })
+  app.get('/customerordersall/:EmailAddress', (req, res) => {
     checkConnection();
     con.query("SELECT * FROM Orders WHERE StaffEmail = '"+req.params.EmailAddress +"'", function (err, result, fields) {
       if (err) throw err;
